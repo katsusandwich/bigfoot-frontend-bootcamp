@@ -16,6 +16,7 @@ const App = () => {
   }, []);
 
   // useEffect(() => {axios.get(`${BACKEND_URL}/sightings`).then((res)=>{setSightings(res.data);});}, []);
+  console.log(`This is ${sightings}`);
 
   return (
     <div className="App">
