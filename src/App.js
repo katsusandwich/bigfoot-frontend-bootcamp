@@ -18,12 +18,41 @@ const App = () => {
   // useEffect(() => {axios.get(`${BACKEND_URL}/sightings`).then((res)=>{setSightings(res.data);});}, []);
   console.log(`This is ${sightings}`);
 
+  // sightings rendering function
+
+  let sightingItems = (sightings) => {
+    return (
+      <table>
+        <thead>
+          <tr>
+            <th>Sighting ID </th>
+            <th>Date </th>
+            <th>Location </th>
+            <th>Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          {sightings.map((sightings) => {
+            return (
+              <tr>
+                <td>{sightings.id}</td>
+                <td>{sightings.date}</td>
+                <td>{sightings.location}</td>
+                <td>{sightings.notes}</td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+    );
+  };
+
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          <p>{sightingItems(sightings)}</p>
         </p>
       </header>
     </div>
