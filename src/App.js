@@ -1,61 +1,31 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import logo from "./logo.png";
 import "./App.css";
 import { BACKEND_URL } from "./constants.js";
+import NewSightingForm from "./Components/new.js";
+import Home from "./Components/home.js";
 
 // class App extends React.Component {
 
 const App = () => {
-  const [sightings, setSightings] = useState([]);
-
-  useEffect(() => {
-    axios.get(`${BACKEND_URL}/sightings`).then((response) => {
-      setSightings(response.data);
-    });
-  }, []);
-
-  // useEffect(() => {axios.get(`${BACKEND_URL}/sightings`).then((res)=>{setSightings(res.data);});}, []);
-  console.log(`This is ${sightings}`);
-
-  // sightings rendering function
-
-  let sightingItems = (sightings) => {
-    return (
-      <table>
-        <thead>
-          <tr>
-            <th>Sighting ID </th>
-            <th>Date </th>
-            <th>Location </th>
-            <th>Notes</th>
-          </tr>
-        </thead>
-        <tbody>
-          {sightings.map((sightings) => {
-            return (
-              <tr>
-                <td>{sightings.id}</td>
-                <td>{sightings.date}</td>
-                <td>{sightings.location}</td>
-                <td>{sightings.notes}</td>
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
-    );
-  };
-
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          <p>{sightingItems(sightings)}</p>
-        </p>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        {/* Route that provides base app UI */}
+        {/* <Route path="/" element={<App />}> */}
+        {/* Route that renders home content */}
+        <Route index element={<Home />} />
+        {/* Route that renders new sighting form */}
+        <Route path="new" element={<NewSightingForm />} />
+        {/* Route that renders individual sightings */}
+        {/* <Route path="sightings/:sightingId" element={<Sighting />} /> */}
+        {/* Route that matches all other paths */}
+        <Route path="*" element={"Nothing here!"} />
+        {/* </Route> */}
+      </Routes>
+    </BrowserRouter>
   );
 };
 
