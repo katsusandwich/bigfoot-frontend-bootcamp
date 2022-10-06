@@ -22,24 +22,24 @@ const NewSightingForm = () => {
   const { register, handleSubmit } = useForm();
 
   // react form submit thing should do an axios post
-  const onSubmit = (data) => console.log(data);
-  axios
-    .post(`${BACKEND_URL}/sightings`, {
-      date,
-      location,
-      notes,
-    })
-    .then(() => {
-      // Clear form state
-      setDate("");
-      setLocation("");
-      setNotes("");
-      //navigate to home
-      Navigate(`/`);
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
+  const onSubmit = (data) =>
+    axios
+      .post(`${BACKEND_URL}/sightings`, {
+        date,
+        location,
+        notes,
+      })
+      .then(() => {
+        // Clear form state
+        setDate("");
+        setLocation("");
+        setNotes("");
+        //navigate to home
+        Navigate(`/`);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
 
   return (
     <div className="App">
