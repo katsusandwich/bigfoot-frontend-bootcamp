@@ -1,9 +1,9 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+// import React, { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import logo from "./logo.png";
 import "./App.css";
-import { BACKEND_URL } from "./constants.js";
+// import { BACKEND_URL } from "./constants.js";
 import NewSightingForm from "./Components/new.js";
 import Home from "./Components/home.js";
 
